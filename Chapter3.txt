@@ -1,0 +1,64 @@
+ps -aux
+ps -ef
+ps -u root
+
+top
+top -u apache
+
+htop
+
+nice -n 10 myscript.sh
+
+renice -n 5 -p 1234
+
+kill 1234
+kill -9 1234
+
+killall firefox
+processes
+killall -9 apache2 
+
+pkill chrome
+pkill -f "python myscript"
+
+jobs
+
+fg %1
+
+bg %2
+
+nohup ./myscript.sh &
+
+./longtask.sh &
+
+disown %1
+
+strace ls
+strace -p 1234
+
+lsof -p 1234
+lsof -i :80
+
+watch -n 1 ps aux
+
+pidof firefox
+
+pmap 1234
+
+taskset -c 0,1 ./prog 
+taskset -p 1234
+
+systemctl status apache2
+systemctl stop apache2
+
+ionice -c2 -n0 ./backup.sh
+
+schedtool -R -p 99 -e ./prog
+
+crontab -e 0 2 * * * /home/user/backup.sh
+
+echo "echo 'Hello from the future' >> ~/future.txt" | at 5pm
+
+atq
+
+atrm 2

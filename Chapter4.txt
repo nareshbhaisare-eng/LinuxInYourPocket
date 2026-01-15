@@ -1,0 +1,119 @@
+lsblk -f
+
+blkid
+
+pwd
+
+cd /var/log
+pwd
+
+ls -lh
+
+mkdir projects
+
+rm -r projects
+
+tree /home/user
+
+touch newfile.txt
+
+cp source.txt destination.txt
+
+cp -r mydir backup_dir
+
+mv file.txt /home/user/documents/
+mv oldname.txt newname.txt
+
+rm oldfile.txt
+rm -r olddir/
+rm -rf temp/
+
+find /home/user -name "*.txt"
+
+locate passwd
+
+ls -l example.txt
+
+chmod u+x script.sh
+chmod g-w example.txt
+chmod 755 script.sh
+chmod 644 example.txt
+
+chown alice example.txt
+chown alice:staff example.txt
+
+chgrp staff example.txt
+
+sudo fdisk –l
+sudo fdisk /dev/sdb
+
+sudo parted /dev/sdb
+(parted) mklabel gpt
+(parted) mkpart primary ext4 0% 100%
+(parted) print 
+(parted) quit
+
+dd if=/dev/zero of=rootfs.img bs=1M count=100
+mkfs.ext4 rootfs.img
+mkdir /mnt/rootfs
+sudo mount -o loop rootfs.img /mnt/rootfs
+sudo cp -r my-rootfs/* /mnt/rootfs
+sudo umount /mnt/rootfs
+
+mksquashfs rootfs_dir rootfs.squashfs -comp xz
+
+dd if=/dev/sdX of=disk.img bs=4M
+
+cd initramfs_dir
+find . | cpio -o --format=newc > initramfs.cpio | gzip initramfs.cpio
+
+sudo mount /dev/sdb1 /mnt/data
+sudo mount -t ext4 /dev/sdb1 /mnt/data
+sudo mount -o ro,nosuid,noexec /dev/sdb1 /mnt/data
+
+sudo umount /mnt/data
+sudo umount /dev/sdb1
+
+sudo mount -a
+
+df -h
+
+du -sh /home/*
+
+sudo apt install ncdu
+install ncdu
+sudo ncdu /home
+
+/dev/sda1 /home ext4 usrquota,grpquota 1 2
+
+sudo mount -o remount /home
+
+sudo quotacheck -cug /home
+sudo quotaon /home
+
+sudo edquota username
+
+quota -u username
+repquota /home
+
+sudo apt clean
+sudo apt autoclean
+
+sudo rm -rf /tmp/*
+
+sudo journalctl --vacuum-time=7d
+
+sudo apt autoremove
+sudo apt list --installed | grep -i unused
+
+sudo yum autoremove
+
+sudo fsck -y /dev/sdb1
+sudo tune2fs -l /dev/sda1
+sudo tune2fs -c 30 /dev/sda1
+sudo tune2fs -i 2w /dev/sda1
+
+sudo e2label /dev/sdb1 DATA_DISK
+sudo e2label /dev/sdb1
+sudo mount -L DATA_DISK /mnt/data
+

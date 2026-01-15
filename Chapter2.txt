@@ -1,0 +1,155 @@
+Chptr 2
+ls
+ls -l
+ls -a
+ls -lh
+ls -R /etc
+ls –ltr
+
+cd /home/user
+cd ..
+cd ~
+cd –
+
+cp file1.txt file2.txt
+cp -r dir1/ dir2/
+cp -v src.txt dest.txt
+cp -u new_config.conf /etc/
+
+mv oldname.txt newname.txt
+mv -v file.txt /home/user/
+mv -i file1.txt backup/
+
+rm file.txt
+rm -r old_folder/
+rm -rf temp/
+rm -i important.txt
+
+mkdir newdir
+mkdir -p /tmp/project/logs
+mkdir -v -m 755 scripts/
+
+chmod +x script.sh
+chmod 755 myscript.sh
+chmod -R 644 /var/www/
+chmod --reference=template.txt newfile.txt
+
+chown user file.txt
+chown user:group /path/to/dir
+chown -R root:admin /etc/
+chown --reference=ref.txt target.txt
+
+touch newfile.txt
+touch -c maybe_exists.txt
+touch -t 202504210830.00 oldfile.txt
+
+find . -name "*.txt"
+find /var/log -type f -size +10M
+find . -mtime -1
+find /tmp -name "*.tmp" -delete
+find . -name "*.log" -exec gzip {} \;
+
+locate passwd
+locate -i config
+locate -n 5
+locate --regex '\.conf$'
+
+echo "Hello, world!"
+echo -n "Processing..."
+echo -e "Line1\nLine2"
+
+cat file.txt
+cat -n poem.txt
+cat file1.txt file2.txt > combined.txt
+cat -s notes.txt
+
+head file.txt
+head -n 5 log.txt
+head -c 100 data.bin
+head -v -n 3 sample.txt
+
+tail file.txt
+tail -n 20 messages.log
+tail -f server.log
+tail -c 50 data.bin
+
+more /etc/passwd
+more +20 file.txt
+
+less /var/log/syslog
+less +G notes.txt
+less /etc/fstab
+
+pwd
+
+sudo reboot
+sudo reboot --no-wall
+
+sudo shutdown -h now
+sudo shutdown -r +5
+sudo shutdown –c
+
+stat file.txt
+stat -c '%n %s %y' file.txt
+
+cut -d ':' -f1 /etc/passwd
+cut -c1-10 filename.txt
+
+uname -a
+uname -r
+uname -n
+
+uptime
+
+hostname
+hostname -i
+hostname -f
+
+free -h
+free -m
+
+whoami
+
+id
+id -u
+id -Gn
+
+su
+su –
+su -c 'systemctl restart apache2'
+
+sudo apt update
+sudo -u www-data ls /var/www
+
+man ls
+man -k network
+
+date
+date '+%Y-%m-%d %H:%M:%S'
+sudo date -s '2025-04-29 14:00:00'
+
+grep "main" file.c
+grep -i "error" log.txt
+grep -v "404" access.log
+grep -n "pattern" file.txt
+grep -r "TODO" .
+grep -C 2 "something" file.txt
+
+zip files.zip file1 file2
+zip -r archive.zip folder/
+zip -9 best.zip largefile
+zip -e secret.zip secrets.txt
+
+tar -cvf archive.tar file1 file2
+tar -xvf archive.tar
+tar -czvf archive.tar.gz folder/
+tar -xjvf backup.tar.bz2
+
+nano file.txt
+nano -l notes.txt
+
+vim config.txt
+vim +42 file.py
+
+gedit file.txt &
+gedit --new-window index.html &

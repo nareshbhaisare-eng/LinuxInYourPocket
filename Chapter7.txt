@@ -1,0 +1,132 @@
+grep "error" /var/log/syslog
+grep -rin "login" /etc
+grep "hello" file.txt
+grep -i "hello" file.txt
+grep -n "error" logfile.txt
+grep -r "main()" /home/user/code
+grep -o "[0-9]\{3\}-[0-9]\{3\}-[0-9]\{4\}" contacts.txt
+grep -v "404" access.log
+grep -c "failed" auth.log
+grep "^error" logfile.txt
+grep "error$" logfile.txt
+dmesg | grep "usb"
+grep -E "fail|error|fatal" syslog
+grep --color=auto "warning" messages.log
+grep -A 3 "error" logfile.txt
+grep -B 2 "error" logfile.txt
+grep -C 1 "error" logfile.txt
+grep "Failed password" /var/log/auth.log
+grep -r "Listen 80" /etc/*.conf
+grep -n "def " *.py
+
+sed 's/pattern/replacement/' file.txt
+sed 's/apple/orange/' file.txt
+sed 's/apple/orange/g' file.txt
+sed '3s/apple/orange/' file.txt
+sed -i 's/old/new/g' file.txt
+sed -i.bak 's/old/new/g' file.txt
+sed '/^$/d' file.txt
+sed '5d' file.txt
+sed '10,15d' file.txt
+sed -n '2p' file.txt
+sed -n '/error/p' log.txt
+sed -n '1,5p' file.txt
+sed '3i\This is a new line' file.txt
+sed '3a\This comes after line 3' file.txt
+sed '4c\This is the new content of line 4' file.txt
+sed -n '/^error/p' file.txt
+sed -n '/;$/p' script.sh
+sed -e 's/foo/bar/g' -e 's/hello/hi/g' file.txt
+
+sed '
+s/foo/bar/g
+s/hello/hi/g
+' file.txt
+
+cat file.txt | sed 's/[0-9]/#/g'
+
+sed '/^#/d' script.sh
+sed 's/,/\t/g' data.csv
+sed 's/[a-zA-Z0-9._%+-]\+@[a-zA-Z0-9.-]\+\.[a-zA-Z]\{2,4\}/[EMAIL]/g' file.txt
+sed 's/<[^>]*>//g' file.html
+
+awk '{ print $1 }' data.txt
+awk '{ print $1, $3 }' data.txt
+awk -F: '{ print $1, $3 }' /etc/passwd
+awk '$3 > 50 { print $1, $3 }' scores.txt
+awk '/ERROR/ { print }' logfile.txt
+awk '$2 == "admin" { print $1 }' users.csv
+awk 'BEGIN { print "Name\tScore" } { print $1, $2 } END { print "Done."}' scores.txt
+awk '{ sum += $2 } END { print "Total:", sum }' values.txt
+awk '{ printf "%-10s %-5s\n", $1, $2 }' data.txt
+awk '$3 >= 60 { count++ } END { print "Passed:",count }' marks.txt
+awk 'max < $2 { max = $2 } END { print max }'data.txt
+awk '{ print NR, $0 }' file.txt
+awk '$2 == "offline" { $2 = "online" } {print }' status.txt
+
+ps aux | awk '$3 > 50 { print $1, $3 }'
+df -h | awk '$5+0 > 90 { print $0 }'
+
+sort names.txt
+sort -r names.txt
+sort -n scores.txt
+sort -k2 file.txt
+sort -t, -k2 students.csv
+sort -t, -k3 -n students.csv
+sort file.txt | uniq
+sort -u file.txt
+sort -c file.txt
+sort -M months.txt
+du -h | sort -h
+sort -s -k2 file.txt
+sort -nr marks.txt
+ps aux | sort -k3 -n -r | head
+
+uniq data.txt
+sort data.txt | uniq
+uniq -c data.txt
+sort data.txt | uniq -c | sort -nr
+uniq -d data.txt
+uniq -u data.txt
+uniq -i data.txt
+uniq -f 1 data.txt
+uniq -s 5 data.txt
+sort -u data.txt
+cat log.txt | sort | uniq -c | sort -nr | head
+
+cut -c1-5 data.txt
+cut -c1,3,5 file.txt
+cut -b1-4 file.txt
+cut -d',' -f1 students.csv
+cut -d':' -f1 /etc/passwd
+cut -d',' -f1,3 students.csv
+cut -d',' -f2-4 data.csv
+ls -l | cut -d' ' -f1,9
+cut -f2-3 data.tsv
+cut -d',' -f3 marks.csv | sort | uniq
+
+paste names.txt emails.txt
+diff config.old config.new
+
+cat access.log | grep "404" | awk '{print $1}' | sort | uniq -c | sort -nr
+
+cut -d' ' -f1 access.log | sort | uniq -c | sort -nr | head -10
+grep ' 404 ' access.log | wc -l
+awk -F'[:[]' '{print $3}' access.log | sort | uniq -c
+grep ' 4[0-9][0-9] ' access.log | sed 's/^[0-9.]* -- //' | sed 's/HTTP\/[0-9.]*/HTTP/g'
+grep ' 404 ' access.log | cut -d'"' -f2 | cut -d' '-f2 | sort | uniq -c | sort -nr | head -5
+diff -u access_old.log access.log
+
+#!/bin/bash
+echo "---- Log Summary ----"
+echo "Top 5 IP addresses:"
+cut -d' ' -f1 access.log | sort | uniq -c | sort -nr | head -5
+echo -e "\nTotal 404 errors:"
+grep ' 404 ' access.log | wc -l
+echo -e "\nRequests per hour:"
+awk -F'[:[]' '{print $3}' access.log | sort | uniq -c
+echo -e "\nMost requested pages with 404:"
+grep ' 404 ' access.log | cut -d'"' -f2 | cut -d' ' -f2 | sort | uniq -c | sort -nr | head -5
+
+Save as log_summary.sh
+grep ' 404 ' access.log | cut -d' ' -f1 | sort | uniq -c | sort -nr | head -5

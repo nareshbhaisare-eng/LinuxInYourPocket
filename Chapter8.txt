@@ -1,0 +1,37 @@
+sudo useradd runjhun
+sudo useradd -m -s /bin/bash -c "John Doe" johndoe
+
+sudo passwd johndoe
+id johndoe
+getent passwd johndoe
+
+sudo usermod -s /bin/zsh johndoe
+sudo usermod -d /new/home/johndoe -m johndoe
+sudo usermod -l newname oldname
+
+sudo userdel username
+sudo userdel -r username
+
+sudo groupadd developers
+sudo usermod -aG developers johndoe
+groups johndoe
+
+sudo chage -l johndoe 
+sudo chage -M 90 johndoe
+sudo chage -W 10 johndoe
+
+sudo passwd -l johndoe
+sudo passwd -u johndoe
+
+sudo chown user file.txt
+sudo chown user:group file.txt
+
+sudo chgrp developers project.txt
+
+top
+
+vmstat 5
+
+journalctl
+journalctl -u sshd
+journalctl -b

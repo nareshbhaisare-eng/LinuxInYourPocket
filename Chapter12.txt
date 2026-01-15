@@ -1,0 +1,163 @@
+sudo apt update
+sudo apt install android-tools-adb android-tools fastboot
+
+wget
+https://dl.google.com/android/repository/platformtools-latest-linux.zip
+unzip platform-tools-latest-linux.zip
+export PATH=$PATH:/home/<user>/Download
+
+adb devices
+
+adb shell
+
+adb shell ps -A | grep com.android.chrome
+
+adb pull /sdcard/DCIM/photo.jpg ~/Pictures/
+adb push hello.txt /sdcard/Download/
+adb shell rm /sdcard/Download/unwanted.mp3
+adb shell mv /sdcard/Download/notes.txt /sdcard/Documents/
+adb shell cp /data/temp/template.doc /sdcard/Documents/
+adb shell ls /data/data/
+
+adb logcat
+adb logcat -s ActivityManager
+adb logcat *:W 
+adb logcat | grep MyApp
+adb logcat -d > crash_log.txt
+
+file libtirpc.so.3.0.0
+exiftool libtirpc.so.3.0.0
+binwalk libtirpc.so.3.0.0
+
+adb install myapp.apk
+adb install -r myapp.apk
+adb uninstall com.example.myapp
+adb shell pm grant com.example.myapp android.permission.CAMERA
+adb shell am start -n com.example.myapp/.MainActivity
+
+adb reboot
+adb reboot bootloader
+adb reboot recovery
+
+fastboot devices
+fastboot oem unlock
+fastboot flash recovery TWRP.img
+fastboot reboot
+
+adb shell su
+adb shell
+su
+mount -o remount,rw /system
+
+adb push hosts /system/etc/hosts
+
+adb shell am start -n com.example.app/.MainActivity
+adb logcat *:E > crash.txt
+
+git config --global user.name "Salish Williams"
+git config --global user.email salish@example.com
+git config –list
+git config --global core.editor "nano"
+
+git init
+git init myproject 
+git init --bare
+git init --initial-branch=main
+git init --separate-git-dir=<dir path>
+
+git clone https://github.com/user/project.git
+git clone -b dev https://github.com/user/project.git
+git clone --depth 1 https://github.com/user/project.git
+git clone --recurse-submodules https://github.com/user/project.git
+git clone --bare https://github.com/user/project.git
+
+git add main.c
+git add . 
+git reset <file>
+git diff
+git diff –staged
+git commit -m "message"
+git commit -m "Added verification functionality"
+git commit -a -m "message"
+
+git branch featureX
+git checkout <name>
+
+git checkout featureX
+git checkout -b <name>
+git merge <branch>
+git branch -d featureX
+
+git remote add origin https://github.com/user/repo.git
+git push -u origin main
+git push
+git pull
+git fetch
+
+git log
+git log –oneline
+git log --graph --oneline –decorate
+git show <commit_id>
+
+git restore <file>
+git reset --hard <commit_id>
+git revert <commit_id>
+git clean –fd
+
+git stash
+git stash list
+git stash apply
+git stash drop
+
+git tag v1.0
+
+git pull origin main
+git push origin featureX
+git rebase main
+git add . && git commit
+
+git blame <file>
+git cherry-pick <commit_id>
+git reflog
+git bisect
+
+make mrproper
+make x86_64_defconfig
+make arm64_defconfig
+make rpi_defconfig
+
+export ARCH=arm64
+export CROSS_COMPILE=aarch64-linux-gnumake
+defconfig
+make -j$(nproc)
+
+make ARCH=arm64 CROSS_COMPILE=aarch64-linuxgnu- -j$(nproc)
+make ARCH=arm64 CROSS_COMPILE=aarch64-linuxgnu- Image -j$(nproc)
+make ARCH=arm64 CROSS_COMPILE=aarch64-linuxgnu- Image.gz -j$(nproc)
+make bzImage -j$(nproc)
+
+make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnudtbs -j$(nproc)
+make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnubcm2711- rpi-4-b.dtb
+
+make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnumodules -j$(nproc)
+make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- INSTALL_MOD_PATH=out modules_install
+
+sudo make modules_install
+sudo make install
+
+cp arch/arm64/boot/Image /mnt/sdcard/boot/
+cp arch/arm64/boot/dts/*.dtb /mnt/sdcard/boot/
+rsync -av out/lib/modules/ /mnt/sdcard/lib/modules/
+
+make clean
+make mrproper
+make distclean
+
+cd ~/linux-6.6
+export ARCH=arm64
+export CROSS_COMPILE=aarch64-linux-gnumake bcm2711_defconfig
+make -j8 Image modules dtbs
+mkdir -p ../rpi_kernel_install
+make INSTALL_MOD_PATH=../rpi_kernel_install modules_install
+cp arch/arm64/boot/Image ../rpi_kernel_install/
+cp arch/arm64/boot/dts/broadcom/*.dtb ../rpi_kernel_install/

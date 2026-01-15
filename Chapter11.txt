@@ -1,0 +1,101 @@
+sudo apt install htop
+sudo yum install htop
+sudo dnf install htop
+
+vmstat 2 5
+
+sudo apt install iotop
+sudo yum install iotop
+sudo dnf install iotop
+sudo iotop
+
+sudo du -sh /var/log/*
+
+sudo journalctl --vacuum-time=7d
+sudo journalctl --vacuum-size=200M
+sudo rm -rf /var/log/journal
+sudo mkdir /var/log/journal
+
+sudo rm -f /var/log/*.gz
+sudo rm -f /var/log/*.1
+
+sudo apt autoremove
+sudo apt autoclean
+sudo apt clean
+
+sudo yum autoremove
+sudo yum clean all
+
+sudo dnf autoremove
+sudo dnf clean packages
+
+sudo apt install deborphan
+deborphan
+deborphan | xargs sudo apt -y remove –purge
+
+sudo apt clean
+rm -rf ~/.cache/thumbnails/*
+sudo apt --purge autoremove
+
+sudo apt install bleachbit
+sudo bleachbit
+
+free -h
+swapon --show
+
+cat /proc/sys/vm/swappiness
+sudo sysctl vm.swappiness=10
+sudo sysctl -p
+
+sudo fallocate -l 2G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+
+sudo swapoff /swapfile
+sudo rm /swapfile
+
+sudo apt install sysstat
+iostat -x 2 5
+
+df -h
+du -sh /*
+
+sudo apt install iftop
+sudo iftop
+sudo apt install nload
+nload
+
+netstat -i
+netstat -plant
+
+ping 8.8.8.8
+ping google.com
+
+grep -i error /var/log/syslog
+grep -i fail /var/log/messages
+
+journalctl -xe
+journalctl -u nginx
+
+tail -f /var/log/syslog
+journalctl -f
+
+sysctl -a
+sudo sysctl -w fs.file-max=2097152
+sudo sysctl -w vm.swappiness=10
+
+sudo sysctl -w net.core.somaxconn=1024
+sudo sysctl -w
+net.ipv4.tcp_max_syn_backlog=2048
+sudo sysctl -p
+
+renice -n 10 -p <PID>
+
+sudo cgcreate -g memory:/limited
+echo 500M >
+/sys/fs/cgroup/memory/limited/<bytes>
+cgexec -g memory:limited ./script.sh
+
+systemctl list-unit-files --state=enabled
+sudo systemctl disable bluetooth

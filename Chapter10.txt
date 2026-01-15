@@ -1,0 +1,52 @@
+groups username
+
+ls -l file.txt
+
+chmod u+x script.sh
+chmod g-w data.txt
+chmod o=r report.txt
+
+mount -o remount,acl /mountpoint
+
+setfacl -m u:john:rw file.txt
+setfacl -m g:staff:rx file.txt
+getfacl file.txt
+
+find / -perm -4000
+
+sudo apt install ufw
+sudo ufw enable
+sudo ufw allow 22/tcp
+sudo ufw allow 80/tcp
+sudo ufw deny 23
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw status numbered
+
+sudo ufw delete 2
+
+sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+sudo iptables -A INPUT -j DROP
+sudo apt install iptables-persistent
+
+ss -tuln
+netstat -tulpn
+nmap -sS localhost
+
+gpg -c myfile.txt
+gpg myfile.txt.gpg
+
+gpg --gen-key
+gpg -e -r username file.txt
+
+openssl enc -aes-256-cbc -in file.txt -out file.txt.enc
+openssl enc -aes-256-cbc -d -in file.txt.enc -out file.txt
+sha256sum file.txt
+
+sudo apt install ecryptfs-utils
+sudo mount -t ecryptfs /secret /secret
+
+sudo apt install unattended-upgrades
+sudo apt install lynis
+sudo lynis audit system

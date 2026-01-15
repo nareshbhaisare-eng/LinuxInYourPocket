@@ -1,0 +1,33 @@
+sudo apt update
+sudo apt install package-name
+sudo apt remove package-name
+sudo apt purge package-name
+
+sudo yum install package-name
+sudo dnf install package-name
+sudo dnf remove package-name
+
+sudo pacman -Syu package-name
+sudo pacman -R package-name
+
+apt search keyword
+dnf search keyword
+pacman -Ss keyword
+
+sudo apt update && sudo apt upgrade
+sudo dnf update
+sudo pacman -Syu
+
+sudo apt --fix-broken install
+sudo dnf check
+sudo dnf repoquery –unsatisfied
+
+sudo apt clean
+sudo apt autoremove
+sudo dnf clean all
+sudo pacman -Sc
+
+apt show package-name
+dnf info package-name
+pacman -Qi package-name
+

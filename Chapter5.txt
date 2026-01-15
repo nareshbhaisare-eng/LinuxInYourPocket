@@ -1,0 +1,61 @@
+ip a
+
+sudo ip link set eth0 up
+sudo ip link set eth0 down
+
+hostname
+
+sudo hostnamectl set-hostname new-hostname
+
+cat /etc/resolv.conf
+
+ip route
+
+sudo ip route add default via 192.168.1.1
+
+ping google.com
+traceroute google.com
+ss -tuln
+
+ssh user@remote_ip
+scp file.txt user@remote_ip:/home/user/
+scp -r folder/ user@remote_ip:/home/user/
+sudo systemctl start ssh
+sudo systemctl enable ssh
+
+vi /etc/ip.conf
+vim /etc/ip.conf
+nano /etc/ip.conf
+
+sudo apt install sshfs
+mkdir ~/remote_folder
+sshfs user@remote_ip:192.168.1.11 ~/remote_folder
+
+ifconfig
+
+sudo ip link set eth0 up
+sudo ip addr add 192.168.1.10/24 dev eth0
+
+ping google.com
+ping 192.168.1.45
+ping 10.125.21.12
+
+sudo apt install openssh-server
+sudo systemct1 start ssh
+sudo systemct1 enable ssh
+
+ssh keygen
+ssh-copy-id username@remote_ip
+
+sudo ufw allow ssh 
+sudo ufw allow 2469/tcp 
+sudo ufw enable
+sudo systemct1 restart ssh
+
+scp myfile.txt user@remote: /home/user/
+scp –r myfolder/ user@remote: /home/user/
+
+rsync –avz /local/folder/
+user@remote:/remote/folder/
+
+
